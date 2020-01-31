@@ -1,0 +1,25 @@
+{% extends "admin/base.html" %}
+{% load static %}
+{% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block extrastyle %}
+<style>
+    #header { background: #013d6c; }
+
+    .module caption { background: #1072bf; }
+
+    div.breadcrumbs { background: #1072bf; }
+
+    .module h2 { background: #1072bf; }
+</style>
+{% endblock%}
+
+{% block branding %}
+<h1 id="site-name">
+    <a href="{% url 'admin:index' %}">
+        <img src="{% static 'DD_Logo_Admin.png' %}" height="50px" />
+    </a>
+</h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
