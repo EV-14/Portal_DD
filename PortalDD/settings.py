@@ -24,9 +24,27 @@ SECRET_KEY = 'eiib@@4h59jb9z($0inyk^tlx$_zq#vamn%%ya1%w2vuin^*f-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+####################################################################
+ALLOWED_HOSTS = ['127.0.0.1','localhost','depressiondetect.pythonanywhere.com']
 
-ALLOWED_HOSTS = []
+SECURE_CONTENT_TYPE_NOSNIFF = True
 
+SECURE_HSTS_SECONDS = 31536000
+
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+
+SESSION_COOKIE_SECURE = True
+
+SECURE_HSTS_PRELOAD = True
+
+CSRF_COOKIE_SECURE = True
+
+SECURE_SSL_REDIRECT = True
+
+SECURE_BROWSER_XSS_FILTER = True
+
+X_FRAME_OPTIONS = 'DENY'
+###################################################################
 
 # Application definition
 
@@ -120,9 +138,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 
 # Media Files
 MEDIA_URL = '/media/'
