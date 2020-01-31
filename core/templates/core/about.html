@@ -2,22 +2,32 @@
 
 {% block title %} Acerca de {% endblock %}
 
-{% block background %}{% load static %}{% static 'core/img/about-bg.jpg' %}{% endblock %}
+{% block background %}{% load static %}{% static 'core/img/about-DD.png' %}{% endblock %}
 
 {% block headers %}
 <h1>Acerca de</h1>
-<span class="subheading">Biografía</span>
+<span class="subheading">DepressionDetect</span>
 {% endblock %}
 
 {% block content %}
 <div class="row">
     <div class="col-lg-3 col-md-4 offset-lg-1">
-        <img class="img-fluid avatar" src="{% static 'core/img/avatar.jpg' %}" alt="">
+        <img class="img-fluid avatar" src="{% static 'core/img/Logo_DD.png' %}" alt="">
     </div>
     <div class="col-lg-7 col-md-8">
-        <h2 class="section-heading">Juan Pérez</h2>   
-        <p>Nacido en... lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nostrum ullam eveniet pariatur voluptates odit, fuga atque ea nobis sit soluta odio.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nostrum ullam eveniet pariatur voluptates odit...</p>
+        <h2 align="center" class="section-heading">Modelo DepressionDetect</h2>
+        <p align="justify">Validación Del Modelo DepressionDetect Para El Diagnóstico Automático De La Depresión Mediante La Voz Basado En Redes Convolucionales Profundas</p>
+        <p align="justify">El objetivo del proyecto es contribuir desde el punto de vista social al campo de la
+            salud al mejorar las condiciones de diagnóstico del paciente proporcionando una
+            evaluación objetiva y un diagnóstico rápido a través de redes neuronales
+            convolucionales.<br>
+            La tasa de detección de la depresión podría mejorar reduciendo su dependencia a
+            la observación subjetiva de los médicos y proporcionando una evaluación mucho
+            más objetiva y rápida, mediante la implementación de IA, varias investigaciones
+            han demostrado que las señales del habla en los pacientes con depresión y en la
+            gente sin esta condición tienen diferencias significativas; otros investigadores han
+            aplicado métodos de Deep Learning y de Machine Learning para el análisis del
+            audio para identificar el grado de depresión de pacientes con depresión.</p>
     </div>
 </div>
 {% endblock %}
