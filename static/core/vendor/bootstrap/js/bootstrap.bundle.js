@@ -5781,7 +5781,7 @@ var ScrollSpy = function () {
         var targetSelector = Util.getSelectorFromElement(element);
 
         if (targetSelector) {
-          target = $(targetSelector)[0];
+          target = $.find(targetSelector)[0];
         }
 
         if (target) {
