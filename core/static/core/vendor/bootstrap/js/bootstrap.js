@@ -3386,14 +3386,21 @@ var ScrollSpy = function () {
       config = $.extend({}, Default, config);
 
       if (typeof config.target !== 'string') {
-        var id = $(config.target).attr('id');
+        var targetElement = config.target.jquery ? config.target[0] : config.target;
+        var id = targetElement.getAttribute('id');
 
         if (!id) {
           id = Util.getUID(NAME);
-          $(config.target).attr('id', id);
+          targetElement.setAttribute('id', id);
         }
 
         config.target = "#" + id;
+      } else {
+        var targetElementBySelector = document.querySelector(config.target);
+
+        if (!targetElementBySelector) {
+          throw new Error("The scrollspy target \"" + config.target + "\" is not a valid selector.");
+        }
       }
 
       Util.typeCheckConfig(NAME, config, DefaultType);
