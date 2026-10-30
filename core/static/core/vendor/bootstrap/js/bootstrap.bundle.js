@@ -5827,12 +5827,18 @@ var ScrollSpy = function () {
     _proto._getConfig = function _getConfig(config) {
       config = $.extend({}, Default, config);
 
-      if (typeof config.target !== 'string') {
-        var id = $(config.target).attr('id');
+      if (typeof config.target === 'string') {
+        try {
+          document.querySelector(config.target);
+        } catch (err) {
+          throw new Error("`target` must be a valid selector.");
+        }
+      } else {
+        var id = config.target.getAttribute('id');
 
         if (!id) {
           id = Util.getUID(NAME);
-          $(config.target).attr('id', id);
+          config.target.setAttribute('id', id);
         }
 
         config.target = "#" + id;
