@@ -5208,7 +5208,12 @@ var Tooltip = function () {
           $element.text($(content).text());
         }
       } else {
-        $element[html ? 'html' : 'text'](content);
+        if (html) {
+          var escapedContent = String(content).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+          $element.html(escapedContent);
+        } else {
+          $element.text(content);
+        }
       }
     };
 
