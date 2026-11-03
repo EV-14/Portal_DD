@@ -5207,8 +5207,11 @@ var Tooltip = function () {
         } else {
           $element.text($(content).text());
         }
+      } else if (html) {
+        var sanitizedContent = typeof content === 'string' ? $('<div/>').text(content).html() : $('<div/>').text(String(content)).html();
+        $element.html(sanitizedContent);
       } else {
-        $element[html ? 'html' : 'text'](content);
+        $element.text(content);
       }
     };
 
