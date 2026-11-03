@@ -3650,7 +3650,7 @@ var Tab = function () {
       }
 
       if (selector) {
-        target = $(selector)[0];
+        target = $(document).find(selector)[0];
       }
 
       this._activate(this._element, listElement);
