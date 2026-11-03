@@ -5826,15 +5826,36 @@ var ScrollSpy = function () {
       config = $.extend({}, Default, config);
 
       if (typeof config.target !== 'string') {
-        var id = $(config.target).attr('id');
+        var isElement = config.target && config.target.nodeType === 1;
+        var isjQueryObject = config.target && config.target.jquery;
 
-        if (!id) {
-          id = Util.getUID(NAME);
-          $(config.target).attr('id', id);
+        if (!isElement && !isjQueryObject) {
+          throw new Error(NAME + ": Option \"target\" provided type \"" + typeof config.target + "\" but expected a DOM element, jQuery object, or selector string.");
+        }
+      }
+
+      var $target;
+
+      if (typeof config.target === 'string') {
+        var targetElement = $.find(config.target)[0];
+
+        if (!targetElement) {
+          throw new Error(NAME + ": Option \"target\" provided selector \"" + config.target + "\" that did not match any elements.");
         }
 
-        config.target = "#" + id;
+        $target = $(targetElement);
+      } else {
+        $target = $(config.target);
       }
+
+      var id = $target.attr('id');
+
+      if (!id) {
+        id = Util.getUID(NAME);
+        $target.attr('id', id);
+      }
+
+      config.target = "#" + id;
 
       Util.typeCheckConfig(NAME, config, DefaultType);
       return config;
