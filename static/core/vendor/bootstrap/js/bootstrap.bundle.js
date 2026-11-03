@@ -5832,17 +5832,30 @@ var ScrollSpy = function () {
         if (!isElement && !isjQueryObject) {
           throw new Error(NAME + ": Option \"target\" provided type \"" + typeof config.target + "\" but expected a DOM element, jQuery object, or selector string.");
         }
+      }
 
-        var $target = $(config.target);
-        var id = $target.attr('id');
+      var $target;
 
-        if (!id) {
-          id = Util.getUID(NAME);
-          $target.attr('id', id);
+      if (typeof config.target === 'string') {
+        var targetElement = $.find(config.target)[0];
+
+        if (!targetElement) {
+          throw new Error(NAME + ": Option \"target\" provided selector \"" + config.target + "\" that did not match any elements.");
         }
 
-        config.target = "#" + id;
+        $target = $(targetElement);
+      } else {
+        $target = $(config.target);
       }
+
+      var id = $target.attr('id');
+
+      if (!id) {
+        id = Util.getUID(NAME);
+        $target.attr('id', id);
+      }
+
+      config.target = "#" + id;
 
       Util.typeCheckConfig(NAME, config, DefaultType);
       return config;
