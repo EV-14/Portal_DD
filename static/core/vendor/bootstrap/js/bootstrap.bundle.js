@@ -5845,7 +5845,13 @@ var ScrollSpy = function () {
 
         $target = $(targetElement);
       } else {
-        $target = $(config.target);
+        var targetElement = config.target.jquery ? config.target[0] : config.target;
+
+        if (!targetElement) {
+          throw new Error(NAME + ": Option \"target\" provided element that did not match any elements.");
+        }
+
+        $target = $(targetElement);
       }
 
       var id = $target.attr('id');
