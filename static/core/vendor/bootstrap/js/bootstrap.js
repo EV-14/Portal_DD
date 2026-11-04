@@ -3386,6 +3386,10 @@ var ScrollSpy = function () {
       config = $.extend({}, Default, config);
 
       if (typeof config.target !== 'string') {
+        if (!config.target || config.target.nodeType !== 1) {
+          throw new Error(NAME.toUpperCase() + ": `target` must be a selector string or a DOM element.");
+        }
+
         var id = $(config.target).attr('id');
 
         if (!id) {
