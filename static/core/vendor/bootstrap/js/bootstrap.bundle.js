@@ -5835,9 +5835,10 @@ var ScrollSpy = function () {
       }
 
       var $target;
+      var targetElement;
 
       if (typeof config.target === 'string') {
-        var targetElement = $.find(config.target)[0];
+        targetElement = $.find(config.target)[0];
 
         if (!targetElement) {
           throw new Error(NAME + ": Option \"target\" provided selector \"" + config.target + "\" that did not match any elements.");
@@ -5845,9 +5846,9 @@ var ScrollSpy = function () {
 
         $target = $(targetElement);
       } else {
-        var targetElement = config.target.jquery ? config.target[0] : config.target;
+        targetElement = config.target && config.target.jquery ? config.target[0] : config.target;
 
-        if (!targetElement) {
+        if (!targetElement || targetElement.nodeType !== 1) {
           throw new Error(NAME + ": Option \"target\" provided element that did not match any elements.");
         }
 
