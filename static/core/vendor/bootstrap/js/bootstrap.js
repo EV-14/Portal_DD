@@ -2771,7 +2771,7 @@ var Tooltip = function () {
           $element.text($(content).text());
         }
       } else {
-        $element[html ? 'html' : 'text'](content);
+        $element.text(content);
       }
     };
 
