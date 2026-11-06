@@ -1208,7 +1208,7 @@ var Collapse = function () {
           var selector = Util.getSelectorFromElement(trigger);
 
           if (selector !== null) {
-            var $elem = $(selector);
+            var $elem = $(document).find(selector);
 
             if (!$elem.hasClass(ClassName.SHOW)) {
               $(trigger).addClass(ClassName.COLLAPSED).attr('aria-expanded', false);
