@@ -4149,7 +4149,7 @@ var Dropdown = function () {
       var selector = Util.getSelectorFromElement(element);
 
       if (selector) {
-        parent = $(selector)[0];
+        parent = $.find(selector)[0];
       }
 
       return parent || element.parentNode;
