@@ -3385,7 +3385,11 @@ var ScrollSpy = function () {
     _proto._getConfig = function _getConfig(config) {
       config = $.extend({}, Default, config);
 
-      if (typeof config.target !== 'string') {
+      if (typeof config.target === 'string') {
+        if (config.target.charAt(0) !== '#') {
+          throw new Error(NAME.toUpperCase() + ": `target` must be a valid ID selector string (starting with '#') or a DOM element.");
+        }
+      } else {
         if (!config.target || config.target.nodeType !== 1) {
           throw new Error(NAME.toUpperCase() + ": `target` must be a selector string or a DOM element.");
         }
