@@ -115,8 +115,8 @@ var Util = function () {
       }
 
       try {
-        var $selector = $(document).find(selector);
-        return $selector.length > 0 ? selector : null;
+        var selectorElements = $.find(selector);
+        return selectorElements.length > 0 ? selector : null;
       } catch (error) {
         return null;
       }
@@ -4791,7 +4791,7 @@ var Modal = function () {
     var selector = Util.getSelectorFromElement(this);
 
     if (selector) {
-      target = $(selector)[0];
+      target = $.find(selector)[0];
     }
 
     var config = $(target).data(DATA_KEY) ? 'toggle' : $.extend({}, $(target).data(), $(this).data());
