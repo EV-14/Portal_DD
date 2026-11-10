@@ -254,7 +254,7 @@ var Alert = function () {
       var parent = false;
 
       if (selector) {
-        parent = $(selector)[0];
+        parent = $(document).find(selector)[0];
       }
 
       if (!parent) {
